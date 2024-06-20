@@ -11,10 +11,19 @@ class CryptoCurrenciesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Crypto Currencies List',
       theme: ThemeData(
-        primaryColor: Colors.yellow,
+        primarySwatch: Colors.yellow,
         scaffoldBackgroundColor: const Color.fromARGB(255, 31, 31, 31),
+        listTileTheme: ListTileThemeData(iconColor: Colors.white),
+        appBarTheme: const AppBarTheme(
+            backgroundColor: Color.fromARGB(255, 31, 31, 31),
+            titleTextStyle: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+              fontSize: 20,
+            )),
         textTheme: const TextTheme(
           bodyMedium: TextStyle(
             color: Colors.white,
@@ -58,12 +67,17 @@ class _MyHomePageState extends State<MyHomePage> {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Crypto Currencies List'),
       ),
-      body: ListView.builder(
+      body: ListView.separated(
         itemCount: 10,
+        separatorBuilder: (context, index) => Divider(),
         itemBuilder: (context, i) => ListTile(
-          leading: SvgPicture.asset('assets/svg/logo.svg', height: 40, width: 40,),
+          leading: SvgPicture.asset(
+            'assets/svg/logo.svg',
+            height: 30,
+            width: 30,
+          ),
           title: Text(
             'Bitcoin',
             style: theme.textTheme.bodyMedium,
@@ -71,6 +85,9 @@ class _MyHomePageState extends State<MyHomePage> {
           subtitle: Text(
             '500\$',
             style: theme.textTheme.labelSmall,
+          ),
+          trailing: Icon(
+            Icons.arrow_forward_ios,
           ),
         ),
       ),
