@@ -104,25 +104,24 @@ class CryptoCoinScreen extends StatefulWidget {
   State<CryptoCoinScreen> createState() => _CryptoCoinScreenState();
 }
 
-
 class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
   String? coinName;
 
   @override
   void didChangeDependencies() {
     final args = ModalRoute.of(context)?.settings.arguments;
-    assert(args != null && args is String , 'Error');
+    assert(args != null && args is String, 'Error');
     coinName = args as String;
-    setState(() {
-
-    });
+    setState(() {});
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(title: Text(coinName ?? '...'),),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(coinName ?? '...'),
+      ),
     );
   }
 }
